@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\bunra\OneDrive\Desktop\PRÁCTICAS\Repositorios\practicas_sym_phn\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4204172336.index
+1759768352.index
+1249110749.index
+2525521949.index
+4188089515.index
+3095401506.index
