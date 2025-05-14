@@ -4,57 +4,27 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <head>
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<% String user = request.getAttribute("user")!=null?(String)request.getAttribute("user"):"";
-String pass = request.getAttribute("pass")!=null?(String)request.getAttribute("pass"):"";
-boolean check = request.getAttribute("check")!=null?(boolean)request.getAttribute("check"):false;
-%>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Formulario y Login</title>
 </head>
 <body>
-<!-- <ul> -->
-<%-- El codigo dentro de <% %> sera codigo java, para pintar el valor de una usaremos <%= %> --%>
-<%-- <%for(int i=0;i<=10;i++){%>  --%>
-<%-- 	<li>El valor de la variable es <%=i%></li> --%>
-<%-- <%}%> --%>
-<!-- </ul> -->
 
-<form action="${pageContext.request.contextPath}/MiServlet" method="post" class="row g-3">
-  <div class="col-md-3">
-    <label for="inputUser" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputUser" name="inputUser">
-  </div>
-  <div class="col-md-3">
-    <label for="inputPassword" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword" name="inputPassword">
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </div>
-</form>
+        <% 
+        String usuario = (String) session.getAttribute("username");
+        if (usuario != null) { 
+	    %>
+	        <h1>Bienvenido, <%= usuario %>!</h1>
+	        <p>Has iniciado sesión correctamente.</p>
+	        <a href="logout.jsp">Cerrar sesión</a>
+	    <% 
+	        } else { 
+	    %>
+	        <h1>No has iniciado sesión</h1>
+	        <p><a href="login.jsp">Iniciar sesión</a> o <a href="Registro.jsp">registrarte</a>.</p>
+	    <% 
+	        }
+	    %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">User</th>
-      <th scope="col">Password</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="table <%if(check==true){%>table-success<%}else{%>table-danger<%}%>">
-      <th scope="row">1</th>
-      <td><%=user!=null?"El usuario es: " + user:""%></td>
-      <td><%=pass!=null?"El pass es: " + pass:""%></td>
-    </tr>
-  </tbody>
-</table>
-<h1></h1>
-<h1></h1>
 </body>
 </html>
